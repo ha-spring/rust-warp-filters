@@ -1,2 +1,3 @@
 curl -s http://localhost:8080/
-curl -s http://localhost:8080/index.html
+curl -s http://localhost:8080/index.html | grep 'Test file' | tr -d ' '
+curl -s http://localhost:8080/todos
