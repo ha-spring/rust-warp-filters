@@ -18,10 +18,8 @@ pub fn check_auth() -> impl Filter<Extract = (UserCtx,), Error = warp::Rejection
             {
                 Ok::<UserCtx, warp::Rejection>(UserCtx { user_id })
             } else {
-                Err(warp::reject::custom(FailAuth));
+                Err(warp::reject::custom(FailAuth))
             }
-
-            Ok::<(), warp::Rejection>(())
         })
 }
 
