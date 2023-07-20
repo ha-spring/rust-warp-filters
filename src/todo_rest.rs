@@ -27,11 +27,11 @@ pub fn todos_filter() -> impl Filter<Extract = impl warp::Reply, Error = warp::R
     list.or(get).or(create)
 }
 
-async fn todo_list(_user_ctx: UserCtx) -> Result<Json, warp::Rejection> {
+async fn todo_list(user_ctx: UserCtx) -> Result<Json, warp::Rejection> {
     // TODO - get from DB
     let todos = json!([
-      {"id": 1, "title": "todo 1"},
-      {"id": 2, "title": "todo 2"},
+      {"id": 1, "title": "todo 1", "user_id": user_ctx.user_id},
+      {"id": 2, "title": "todo 2", "user_id": user_ctx.user_id},
     ]);
 
     let todos = warp::reply::json(&todos);
